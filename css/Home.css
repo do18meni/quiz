@@ -1,0 +1,59 @@
+html,
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+header{
+    text-align: center;
+    background-color:#5346a9;
+    padding: 15px;
+}
+
+header >* {
+    display: inline-block;
+    vertical-align: middle;
+}
+#TITOLO{ 
+    color: #ffffff;
+    font: arial;
+    font-size:40px;
+    text-align: center;
+    transform: translateX(60px);
+}
+.areaLogin{
+    float:right;
+    vertical-align: middle;
+}
+main{
+    display:flex;
+    height: 100%;
+}
+.elencoSx{
+    display: flex;
+    padding: 5px;
+    background-color:#5346a9;
+    color: #ffffff;
+    float: left;
+    width: 15%;
+    text-align:center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.elencoDisc{
+    padding: 0px;
+
+}
+#opzioni{
+    margin-top: 25%;
+    list-style-type: none; 
+}
+#logout{
+    width: 26%;
+    margin-left: 83.5px;
+    margin-bottom: 10px;
+    
+}
+.principale{
+    display: flex;
+}
