@@ -14,15 +14,39 @@
           <h3><input type="text" placeholder="Nome Quiz" name="nameQuiz" id="nameQuiz" required></div></h3>
           <hr>
 
-          <input type="text" placeholder="Inserisci Domanda" name="newQuestion" id="newQuestion" required><br><br>
-      
-          <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required><br><br>
-          <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required><br><br>
-          <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required><br><br>
+          <div class="domanda">
+            <input type="text" placeholder="Inserisci Domanda" name="newQuestion" id="newQuestion" required>
+            <button id="eliminaDom">Elimina Domanda</button>
+          </div>
+
+          <div class = "risposte">
+            <div>
+              <input type = "checkbox">
+              <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required>
+              <button id="eliminaRis">Elimina</button>
+            </div>
+            <div>
+              <input type = "checkbox">
+              <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required>
+              <button id="eliminaRis">Elimina</button>
+            </div>
+            <div>
+              <input type = "checkbox">
+              <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required>
+              <button id="eliminaRis">Elimina</button>
+            </div>
+          </div>
+
           <hr>
+
+          <div>
+            <button id="addDom">+ Domanda</button>
+          </div>  
       
-         
-          <button type="submit" name="NewQuiz" class="NewQuiz">CONFERMA CREAZIONE</button>
+          <div>
+            <button type="submit" name="NewQuiz" class="NewQuiz">CONFERMA CREAZIONE</button>
+          </div>
+          
         </div>
       
     
