@@ -2,7 +2,16 @@ html, body {
     padding:0px;
     margin: 0px;
 }
-
+form {
+    padding:auto;
+    margin:auto;
+    text-align: center;
+}
+#tabQuiz{
+    width:80%;
+    background-color: grey;
+    display:flex;
+}
 #nameQuiz {
     border:none;
 }
