@@ -15,22 +15,41 @@
           <section id="tabQuiz">
 
           <hr>
-      
-          <input type="text" placeholder="Inserisci Domanda" name="newQuestion" id="newQuestion" required><br><br>
-      
-          <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required><br><br>
-          <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required><br><br>
-          <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required><br><br>
+
+          <div class="domanda">
+            <input type="text" placeholder="Inserisci Domanda" name="newQuestion" id="newQuestion" required>
+            <button id="eliminaDom">Elimina Domanda</button>
+          
+            <div class = "risposte">
+              <div>
+                <input type = "checkbox">
+                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required>
+                <button id="eliminaRis">Elimina</button>
+              </div>
+              <div>
+                <input type = "checkbox">
+                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required>
+                <button id="eliminaRis">Elimina</button>
+              </div>
+              <div>
+                <input type = "checkbox">
+                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required>
+                <button id="eliminaRis">Elimina</button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button id="addDom">+ Domanda</button>
+          </div> 
+
           <hr>
-
-
         </section>
         <br>    
-         
+
           <button type="submit" name="NewQuiz" class="NewQuiz">CONFERMA CREAZIONE</button>
+
+        
         </div>
-      
-    
     </form>
   </body>
 </html>
