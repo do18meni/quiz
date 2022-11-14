@@ -17,27 +17,28 @@
           <hr>
 
           <div class="domanda" id = "domanda">
-            <input type="text" placeholder="Inserisci Domanda" name="newQuestion" id="newQuestion" required>
-            <button id="eliminaDom">Elimina Domanda</button>
+            <input type="text" placeholder="Inserisci Domanda" name="newQuestion" class="newQuestion" required>
+            <button class="eliminaDom">Elimina Domanda</button>
           
             <div class = "risposte" id="risposte">
-              <div id = "risposta">
+              <div class = "risposta">
                 <input type = "checkbox">
-                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required>
-                <button id="eliminaRis">Elimina</button>
+                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" class="inAnswer" required>
+                <button class="eliminaRis" onclick="DelRis()">Elimina</button>
               </div>
-              <div id = "risposta">
+              <div class = "risposta">
                 <input type = "checkbox">
-                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required>
-                <button id="eliminaRis">Elimina</button>
+                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" class="inAnswer" required>
+                <button class="eliminaRis" onclick="DelRis()">Elimina</button>
               </div>
-              <div id = "risposta">
+              <div class = "risposta">
                 <input type = "checkbox">
-                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required>
-                <button id="eliminaRis">Elimina</button>
+                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" class="inAnswer" required>
+                <button class="eliminaRis" onclick="DelRis()">Elimina</button>
               </div>
-              <button id="addRis" onclick="AddRis()">+ Risposta</button>
-            </div>
+          </div>
+          <div>
+            <button id="addRis" onclick="AddRis()">+ Risposta</button>
           </div>
           <div>
             <button id="addDom" onclick="AddDom()">+ Domanda</button>
@@ -55,17 +56,53 @@
  
     <script>
       // non va ancora per ora
-      function AddRis(addRis){
-        let addRis = document.getElementById("risposta");
+      function AddRis(){
+        let DIV = document.createElement ("div");
+        DIV.setAttribute("class", "risposta");
+
+        let INPUTCHECK = document.createElement ("input");
+        INPUTCHECK.setAttribute("type", "checkbox");
+        DIV.appendChild(INPUTCHECK);
+
+        let INPUTTEXT = document.createElement("input");
+        INPUTTEXT.setAttribute("type", "text");
+        INPUTTEXT.setAttribute("placeholder", "Inserisci Risposta");
+        INPUTTEXT.setAttribute("class", "inAnswer");
+        DIV.appendChild(INPUTTEXT);
+
+        let BUTTONDEL = document.createElement("button");
+        BUTTONDEL.setAttribute("class", "eliminaRis");
+        BUTTONDEL.setAttribute("onclick", "DelRis()");
+        BUTTONDEL.innerText="Elimina";
+        DIV.appendChild(BUTTONDEL);
+
         let container = document.getElementById("risposte");
-        container.appendChild(addRis);
+        container.appendChild(DIV);
       }
+
+      function DelRis(){
+// PER ORA NON VA
+        var deleteRisposta = document.getElementsByClassName("risposta");
+        deleteRisposta.parentNode.removeChild(deleteRisposta);
+
+      }
+/*
       function AddDom(addDom){
         let addDom = document.getElementById("domanda");
         form.appendChild(addDom);
       }
 
+      //Creazione della form per l'aggiunta dei asseggeri
 
+      function AddDom(form) {
+
+      //Creazione della form
+
+      let addDomanda = document.createElement("form");
+
+      form.appendChild(addDomanda);
+
+*/
     </script>
   </body>
 </html>
