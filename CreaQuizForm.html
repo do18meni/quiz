@@ -12,38 +12,44 @@
          
       
           <input type="text" placeholder="Nome Quiz" name="nameQuiz" id="nameQuiz" required>
+          <br>
+          <br>
           <section id="tabQuiz">
-
-          <hr>
-
+            <br>
           <div class="domanda" id = "domanda">
+            <br>
+            <div class="descrizione">
             <input type="text" placeholder="Inserisci Domanda" name="newQuestion" id="newQuestion" required>
             <button id="eliminaDom">Elimina Domanda</button>
-          
+            </div>
+            <br>
             <div class = "risposte" id="risposte">
-              <div id = "risposta">
+              <div class = "risposta">
                 <input type = "checkbox">
-                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required>
-                <button id="eliminaRis">Elimina</button>
+                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" class="inAnswer" required>
+                <button class="eliminaRis">Elimina</button>
               </div>
-              <div id = "risposta">
+              <div class = "risposta">
                 <input type = "checkbox">
-                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required>
-                <button id="eliminaRis">Elimina</button>
+                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" class="inAnswer" required>
+                <button class="eliminaRis">Elimina</button>
               </div>
-              <div id = "risposta">
+              <div class = "risposta">
                 <input type = "checkbox">
-                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" id="inAnswer" required>
-                <button id="eliminaRis">Elimina</button>
+                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" class="inAnswer" required>
+                <button class="eliminaRis">Elimina</button>
               </div>
+              <br>
               <button id="addRis" onclick="AddRis()">+ Risposta</button>
+              <br>
+              <br>
             </div>
           </div>
+          <br>
           <div>
             <button id="addDom" onclick="AddDom()">+ Domanda</button>
-          </div> 
-
-          <hr>
+          </div>
+          <br>
         </section>
         <br>    
 
