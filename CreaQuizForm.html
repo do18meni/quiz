@@ -15,7 +15,7 @@
           <br>
         <section id="tabQuiz">
           <br>
-          <div class="domanda" id = "domanda">          
+          <div class="domanda" id = "domanda1">          
             <br>
             <div class="descrizione">
             <input type="text" placeholder="Inserisci Domanda" name="newQuestion" class="newQuestion" required>
@@ -23,23 +23,23 @@
             </div>
             <br>
 
-            <div class = "risposte" id="risposte">
-              <div class = "risposta">
+            
+            <div class = "risposte1">
+
+
+              <div class = "risposta" id = "risposta1">
                 <input type = "checkbox">
                 <input type="text" placeholder="Inserisci Risposta" name="inAnswer" class="inAnswer" required>
-
-                <button class="eliminaRis" onclick="DelRis()">Elimina</button>
-
-              </div>
-
-              <div class = "risposta">
-                <input type = "checkbox">
-                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" class="inAnswer" required>
-
                 <button class="eliminaRis" onclick="DelRis()">Elimina</button>
               </div>
 
-              <div class = "risposta">
+              <div class = "risposta" id = "risposta2">
+                <input type = "checkbox">
+                <input type="text" placeholder="Inserisci Risposta" name="inAnswer" class="inAnswer" required>
+                <button class="eliminaRis" onclick="DelRis()">Elimina</button>
+              </div>
+
+              <div class = "risposta" id = "risposta3">
                 <input type = "checkbox">
                 <input type="text" placeholder="Inserisci Risposta" name="inAnswer" class="inAnswer" required>
                 <button class="eliminaRis" onclick="DelRis()">Elimina</button>
@@ -69,9 +69,11 @@
     </form>
  
     <script>
+      let cont = 3;
       function AddRis(){
         let DIV = document.createElement ("div");
         DIV.setAttribute("class", "risposta");
+        DIV.setAttribute("id", "risposta"+ ++cont);
 
         let INPUTCHECK = document.createElement ("input");
         INPUTCHECK.setAttribute("type", "checkbox");
@@ -85,7 +87,7 @@
 
         let BUTTONDEL = document.createElement("button");
         BUTTONDEL.setAttribute("class", "eliminaRis");
-        BUTTONDEL.setAttribute("onclick", "DelRis()");
+        BUTTONDEL.setAttribute("onclick", "DelRis(cont)");
         BUTTONDEL.innerText="Elimina";
         DIV.appendChild(BUTTONDEL);
 
@@ -93,29 +95,83 @@
         container.appendChild(DIV);
       }
 
-      function DelRis(){
+ /*     function DelRis(){
 // PER ORA NON VA
         var deleteRisposta = document.getElementsByClassName("risposta");
         deleteRisposta.parentNode.removeChild(deleteRisposta);
 
       }
-/*
+*/
       function AddDom(addDom){
-        let addDom = document.getElementById("domanda");
-        form.appendChild(addDom);
+        let contdom = 1;
+        let conris = 1;
+        let DIV = document.createElement ("div");
+        DIV.setAttribute("class", "domanda");
+        DIV.setAttribute("id", "domanda" + ++contdom);
+       
+        let DIVDESCR = document.createElement ("div");
+        DIVDESCR.setAttribute("class", "descrizione");
+        DIV.appendChild(DIVDESCR);
+
+        let INPUTTEXT = document.createElement("input");
+        INPUTTEXT.setAttribute("type", "text");
+        INPUTTEXT.setAttribute("placeholder", "Inserisci Domanda");
+        INPUTTEXT.setAttribute("class", "newQuestion");
+        DIVDESCR.appendChild(INPUTTEXT);
+
+        let BUTTONDEL = document.createElement("button");
+        BUTTONDEL.setAttribute("class", "DeleteDom");
+        BUTTONDEL.setAttribute("onclick", "DeleteDom()");
+        BUTTONDEL.innerText="Elimina Domanda";
+        DIVDESCR.appendChild(BUTTONDEL);
+
+        let DIVrisposte= document.createElement ("div");
+        DIVrisposte.setAttribute("class", "risposte"+ ++conris);
+        DIV.appendChild(DIVrisposte);
+       
+        let c = 0;
+        while (c<3){
+          let DIVRIS = document.createElement ("div");
+          DIVRIS.setAttribute("class", "risposta");
+
+          let INPUTCHECK = document.createElement ("input");
+          INPUTCHECK.setAttribute("type", "checkbox");
+          DIVrisposte.appendChild(INPUTCHECK);
+
+          let INPUTTEXT = document.createElement("input");
+          INPUTTEXT.setAttribute("type", "text");
+          INPUTTEXT.setAttribute("placeholder", "Inserisci Risposta");
+          INPUTTEXT.setAttribute("class", "inAnswer");
+          DIVrisposte.appendChild(INPUTTEXT);
+
+          let BUTTONDEL = document.createElement("button");
+          BUTTONDEL.setAttribute("class", "eliminaRis");
+          BUTTONDEL.setAttribute("onclick", "DelRis()");
+          BUTTONDEL.innerText="Elimina";
+          DIVrisposte.appendChild(BUTTONDEL);
+
+          
+          c++;
+        }
+
+        let container = document.getElementById("tabQuiz");
+        container.appendChild(DIV);
+      
       }
 
-      //Creazione della form per l'aggiunta dei asseggeri
 
-      function AddDom(form) {
 
-      //Creazione della form
 
-      let addDomanda = document.createElement("form");
 
-      form.appendChild(addDomanda);
-
-*/
+function createDocument(idItem, className, typeTag){
+	
+	this.objButton = document.createElement(typeTag);
+	this.objButton.id=idItem;
+	if(className!="")
+		this.objButton.classList.add(className);
+	
+	return this.objButton;
+}
     </script>
   </body>
 </html>
