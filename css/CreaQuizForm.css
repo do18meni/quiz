@@ -2,7 +2,7 @@ html, body {
     padding:0px;
     margin: 0px;
     background-color: rgb(158, 23, 158);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial;
 }
 :focus {
     outline: none;
@@ -34,29 +34,31 @@ form {
     background-color: rgba(255, 237, 117, 0.882); 
 }
 
-#domanda{
+.domanda{
     background-color: rgb(191, 189, 189);
     margin-left:12.5%;
     width:75%
     
 }
-#newQuestion::placeholder {
+.newQuestion::placeholder {
     color: rgb(150, 65, 150);
 }
-#newQuestion{
+.newQuestion{
     border-radius: 2.5px;
     border:none;
     background-color: antiquewhite;
     color: rgb(150, 65, 150);
     height: 20px;
+    float: left;
+    margin-left: 20px;
 }
-#eliminaDom{
+.eliminaDom{
     border-radius: 2.5px;
     border:none;
     background-color: red;
     color: white;
     height: 20px;
-
+    transform:translate(137px,0px);
 }
 
 .inAnswer::placeholder {
@@ -80,6 +82,20 @@ form {
     border-radius: 2.5px;
     border:none;
     background-color: rgb(218, 186, 2);
+    color: rgb(235, 235, 235);
+    height: 20px;
+}
+#addDom{
+    border-radius: 2.5px;
+    border:none;
+    background-color: rgb(12, 153, 14);
+    color: rgb(235, 235, 235);
+    height: 20px;
+}
+#conferma{
+    border-radius: 2.5px;
+    border:none;
+    background-color: rgb(12, 153, 14);
     color: rgb(235, 235, 235);
     height: 20px;
 }

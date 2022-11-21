@@ -18,8 +18,8 @@
           <div class="domanda" id = "domanda">          
             <br>
             <div class="descrizione">
-            <input type="text" placeholder="Inserisci Domanda" name="newQuestion" id="newQuestion" required>
-            <button id="eliminaDom" onclick="DeleteDom()">Elimina Domanda</button>
+            <input type="text" placeholder="Inserisci Domanda" name="newQuestion" class="newQuestion" required>
+            <button class="eliminaDom" onclick="DeleteDom()">Elimina Domanda</button>
             </div>
             <br>
 
@@ -62,7 +62,7 @@
         </section>
       
         <br>
-        <button type="submit" name="NewQuiz" class="NewQuiz">CONFERMA CREAZIONE</button>
+        <button type="submit" name="NewQuiz" id="conferma" onclick="conferma()">CONFERMA CREAZIONE</button>
 
         
         </div>
