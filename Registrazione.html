@@ -1,0 +1,224 @@
+<html>
+    <link rel ="stylesheet" href="css/registrazione.css">
+<title>
+    Registrazione
+</title>
+<form>
+
+    <p>
+
+        <label>Nome: <input id="firstName" name="firstName" placeholder="Insert name"></label><br><br>
+        <label>Cognome: <input id="secondName" name="secondName" placeholder="Insert surname"></label><br><br>
+        <label> e-mail: <input id="e_mail" name="e_mail" placeholder="Insert e-mail"></label><br><br>
+        <label>eta: <input id="age" name="age" placeholder="Insert age"></label><br><br>
+        <label>sesso:</label>
+        <select id="sex" name="sex">
+            <option disabled selected>*</option>
+            <option value="M">M</option>
+            <option value="F">F</option>
+        </select><br><br>
+
+        <label>password: <input type="password" id="password" name="password" placeholder="Insert password"><input
+                type="checkbox" onclick="viewPassword()">Show Password <i class="bi_bi-eye-slash"
+                id="togglePassword"></i> </label><br><br>
+        <label>conferma password: <input type="password" id="confirmPassword" name="confirmPassword"
+                placeholder="cofirm Password"><input type="checkbox" onclick="viewConfirmPassword()">Show Password 
+                <i class="bi_bi-eye-slash" id="togglePassword"></i> </label><br><br>
+
+    <p>
+
+        <input type="checkbox" id="policyConsent" name="policyConsent" />
+
+        <label for="policyConsent">Acconsento al trattamento dati</label>
+
+    </p>
+
+    <button type="text" onclick="onAddFlyClicked()">Conferma</button>
+
+    <button type="reset">Pulisci</button>
+
+</form>
+<Script>
+    function viewPassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+
+    function viewConfirmPassword() {
+        var x = document.getElementById("confirmPassword");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+    function onAddFlyClicked() {
+    let newFly = createFlyObjectFromForm(cont);
+    let flyHTMLElement = createFlyHTMLElement(newFly);
+    addNewFlyElementOnpage(flyHTMLElement);
+    cleanForm();
+    cont++;
+  }
+
+    const togglePassword = document.querySelector("#togglePassword");
+    const password = document.querySelector("#password");
+    togglePassword.addEventListener("click", function () {
+        const type = password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+        this.classList.toggle("bi-eye");
+    });
+    const form = document.querySelector("form"); form.addEventListener('submit', function (e) { e.preventDefault(); });
+    class Fly {
+    constructor(firstName, lastName, destination, outboundFlight, returnFlight, policyConsent, id) {
+      this.firstName = firstName;
+      this.secondName = secondName;
+      this.e_mail = e_mail;
+      this.age = age;
+      this.sex = sex;
+      this.policyConsent = policyConsent;
+      this.id = id;
+    }
+
+  }
+
+  var cont = 1;
+
+  function onAddFlyClicked() {
+    let newFly = createFlyObjectFromForm(cont);
+    let flyHTMLElement = createFlyHTMLElement(newFly);
+    addNewFlyElementOnpage(flyHTMLElement);
+    cleanForm();
+    cont++;
+  }
+
+  function createFlyObjectFromForm(cont) {
+    const firstNameObj = document.getElementById("firstName");
+    const secondNameObj = document.getElementById("secondName");
+    const e_mailObj = document.getElementById("e_mail");
+    const ageObj = document.getElementById("age");
+    const sexObj = document.getElementById("sex");
+    const policyCheckboxObj = document.getElementById("policyConsent");
+
+    const newFly = new Fly(
+      firstNameObj.value,
+      secondNameObj.value,
+      e_mailObj.value,
+      ageObj.value,
+      sexObj.value,
+      policyCheckboxObj.checked,
+      cont
+    );
+
+    return newFly;
+  }
+
+  function appendLiElementForAttribute(ul, attribute, value) {
+    let firstNameLi = document.createElement("li");
+    firstNameLi.innerHTML = "<b>" + attribute + "</b>: " + value;
+    ul.appendChild(firstNameLi);
+  }
+
+  function createFlyHTMLElement(fly) {
+    let form = document.createElement("form");
+    form.setAttribute("id", 'formPrenotazione');
+    let ul = document.createElement("ul");
+    ul.setAttribute("id", 'Lista'+fly.id);
+    form.appendChild(ul);
+    form.setAttribute("id", 'passengers')
+
+    appendLiElementForAttribute(ul, "nme", fly.firstName);
+    appendLiElementForAttribute(ul, "cognome", fly.secondName);
+    appendLiElementForAttribute(ul, "e-mail", fly.e_mail);
+    appendLiElementForAttribute(ul, "eta", fly.age);
+    appendLiElementForAttribute(ul, "sesso", fly.sex);
+    appendLiElementForAttribute(ul, "Consenso privacy", (fly.policyConsent ? "Si" : "No"))
+
+    let AddPerson = document.createElement("input");
+    AddPerson.setAttribute("type", 'button');
+    AddPerson.setAttribute("value", 'Aggiugi passeggeri');
+    AddPerson.setAttribute("id", 'InputPass');
+    AddPerson.addEventListener("click", function() {addPassenger(form, fly)});
+
+    form.appendChild(AddPerson);
+    return form;
+  }
+
+  function addNewFlyElementOnpage(flyHTMLElement) {
+    const fliesSection = document.getElementById("flight");
+    fliesSection.appendChild(flyHTMLElement);
+  }
+
+  //Creazione della form per l'aggiunta dei asseggeri
+  function addPassenger(form, fly) {
+    //Creazione della form
+    let AddPassengerForm = document.createElement("form");
+    form.appendChild(AddPassengerForm);
+
+    //Creazione del label e dell'input per il nome del passeggero
+    let AddNameLabel = document.createElement("label");
+    AddPassengerForm.appendChild(AddNameLabel);
+    AddNameLabel.innerHTML = "<b>" +'Nome:' + "</b>";
+    let AddNameInput = document.createElement("input");
+    AddNameInput.setAttribute("id", 'InputName' + fly.id);
+    AddPassengerForm.appendChild(AddNameInput);
+
+    //Creazione del label e dell'input per il cognome del passeggero
+    let AddSurnameLabel = document.createElement("label");
+    AddPassengerForm.appendChild(AddSurnameLabel);
+    AddSurnameLabel.innerHTML = "<b>" + 'Cognome:' + "</b>";
+    let AddSurnameInput = document.createElement("input");
+    AddSurnameInput.setAttribute("id", 'InputSurname'+ fly.id);
+    AddPassengerForm.appendChild(AddSurnameInput);
+
+    //Creazione del bottone che mi permette di confermare i nomi dei passeggeri 
+    let ConfirmPerson = document.createElement("input");
+    ConfirmPerson.setAttribute("type", 'button');
+    ConfirmPerson.setAttribute("value", 'Conferma');
+    ConfirmPerson.setAttribute("id", 'InputPass');
+    AddPassengerForm.appendChild(ConfirmPerson);
+
+    //Richiamo della funzione che aggiunge gli Li alla lista già esistente
+    ConfirmPerson.addEventListener("click", function() {AddLiToForm(AddPassengerForm, fly)} );
+   
+  }
+
+  //Creazione degli elementi Li (Nome e Cognome del passeggero) che verrranno appesi alla lista già esistente
+  function AddLiToForm(AddPassengerForm, fly) {
+    let firstNameLiPass = document.createElement("li");
+    let firstNameP = document.getElementById("InputName"+ fly.id).value;
+    firstNameLiPass.innerHTML = "<b>" + "Nome" + "</b>: " + firstNameP;
+
+    let lastNameLiPass = document.createElement("li");
+    let lastNameP = document.getElementById("InputSurname"+fly.id).value;
+    lastNameLiPass.innerHTML = "<b>" + "Cognome" + "</b>: " + lastNameP;
+
+    AddPassengerForm.appendChild(firstNameLiPass);
+    AddPassengerForm.appendChild(lastNameLiPass);
+
+    cleanFormPass(fly)
+
+  }
+
+  //Funzione che pulisce la form della prenotazione
+  function cleanForm() {
+    document.getElementById("firstName").value = "";
+    document.getElementById("seconName").value = "";
+    document.getElementById("e_mail").value = "";
+    document.getElementById("age").value = "";
+    document.getElementById("sex").value = "";
+    document.getElementById("policyConsent").checked = false;
+  }
+
+  //Funzione che pulisce la form dei passeggeri
+  function cleanFormPass(fly) {
+    document.getElementById("InputName"+fly.id).value = "";
+    document.getElementById("InputSurname"+fly.id).value = "";
+  }
+
+</Script>
+
+</html>
