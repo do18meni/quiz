@@ -52,7 +52,7 @@ form {
     float: left;
     margin-left: 20px;
 }
-.eliminaDom{
+.DeleteDom{
     border-radius: 2.5px;
     border:none;
     background-color: red;
@@ -78,7 +78,7 @@ form {
     color: white;
     height: 20px;
 }
-#addRis {
+.addRis {
     border-radius: 2.5px;
     border:none;
     background-color: rgb(218, 186, 2);

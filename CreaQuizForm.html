@@ -13,14 +13,13 @@
           <input type="text" placeholder="Nome Quiz" name="nameQuiz" id="nameQuiz" required>
           <br>
           <br>
-        <section id="tabQuiz">
-          
+        <section id="tabQuiz"> 
           <br>
           <div class="domanda" id = "domanda1">          
             <br>
             <div class="descrizione">
             <input type="text" placeholder="Inserisci Domanda" name="newQuestion" class="newQuestion" required>
-            <button class="eliminaDom" onclick="DeleteDom()">Elimina Domanda</button>
+            <button class="DeleteDom" onclick="DeleteDom()">Elimina Domanda</button>
             </div>
             <br>
 
@@ -50,14 +49,13 @@
 
             <div>
               <br>
-              <button id="addRis1" onclick="AddRis()">+ Risposta</button>
+              <button id="addRis1" class="addRis" onclick="AddRis()">+ Risposta</button>
               <br><br>
             </div>
           </div>
+           <br>
            
-           
-        </section>
-        
+        </section> 
         <div>
           <br>
           <button id="addDom" onclick="AddDom()">+ Domanda</button>
@@ -107,13 +105,19 @@
       function AddDom(addDom){
         let contdom = 1;
         let conris = 1;
-        let DIV = document.createElement ("div");
-        DIV.setAttribute("class", "domanda");
-        DIV.setAttribute("id", "domanda" + ++contdom);
-       
+        let DIVDOM = document.createElement ("div");
+        DIVDOM.setAttribute("class", "domanda");
+        DIVDOM.setAttribute("id", "domanda" + ++contdom);
+
+        let BR1 = document.createElement("br");
+        DIVDOM.appendChild(BR1);
+
         let DIVDESCR = document.createElement ("div");
         DIVDESCR.setAttribute("class", "descrizione");
-        DIV.appendChild(DIVDESCR);
+        DIVDOM.appendChild(DIVDESCR);
+
+        let BR2 = document.createElement("br");
+        DIVDOM.appendChild(BR2);
 
         let INPUTTEXT = document.createElement("input");
         INPUTTEXT.setAttribute("type", "text");
@@ -129,7 +133,10 @@
 
         let DIVrisposte= document.createElement ("div");
         DIVrisposte.setAttribute("class", "risposte"+ ++conris);
-        DIV.appendChild(DIVrisposte);
+        DIVDOM.appendChild(DIVrisposte);
+
+        let BR3 = document.createElement("br");
+        DIVDOM.appendChild(BR3);
        
         let c = 0;
         let cont = 0;
@@ -156,14 +163,28 @@
           DIVRIS.appendChild(BUTTONDEL);
           c++;
         }
+
         let btncont = 1;
+        let DIVBTNRIS = document.createElement ("div");
+        DIVDOM.appendChild(DIVBTNRIS);
+
         let BUTTONADDRIS = document.createElement("button");
-        BUTTONADDRIS.setAttribute("id", "add");
-        BUTTONADDRIS.setAttribute("onclick", "DeleteDom()");
-        BUTTONDEL.innerText="Elimina Domanda";
-        DIVDESCR.appendChild(BUTTONDEL);
+        BUTTONADDRIS.setAttribute("class", "addRis");
+        BUTTONADDRIS.setAttribute("id", "addRis"+ ++btncont);
+        BUTTONADDRIS.setAttribute("class", "addRis");
+        BUTTONADDRIS.setAttribute("onclick", "AddRis()");
+        BUTTONADDRIS.innerText="+ Risposta";
+
+        DIVBTNRIS.appendChild(BUTTONADDRIS);
+
+        let BR4 = document.createElement("br");
+        DIVDOM.appendChild(BR4);
+
         let container = document.getElementById("tabQuiz");
-        container.appendChild(DIV);
+        container.appendChild(DIVDOM);
+
+        let BRFUORI = document.createElement("br");
+        container.appendChild(BRFUORI);
       
       }
 
