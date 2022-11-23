@@ -14,6 +14,7 @@
           <br>
           <br>
         <section id="tabQuiz">
+          
           <br>
           <div class="domanda" id = "domanda1">          
             <br>
@@ -49,18 +50,19 @@
 
             <div>
               <br>
-              <button id="addRis" onclick="AddRis()">+ Risposta</button>
+              <button id="addRis1" onclick="AddRis()">+ Risposta</button>
               <br><br>
             </div>
           </div>
            
-            <div>
-              <br>
-              <button id="addDom" onclick="AddDom()">+ Domanda</button>
-              <br><br>
-            </div>
+           
         </section>
-      
+        
+        <div>
+          <br>
+          <button id="addDom" onclick="AddDom()">+ Domanda</button>
+          <br><br>
+        </div>
         <br>
         <button type="submit" name="NewQuiz" id="conferma" onclick="conferma()">CONFERMA CREAZIONE</button>
 
@@ -69,11 +71,11 @@
     </form>
  
     <script>
-      let cont = 3;
+      let contrisposte = 3;
       function AddRis(){
         let DIV = document.createElement ("div");
         DIV.setAttribute("class", "risposta");
-        DIV.setAttribute("id", "risposta"+ ++cont);
+        DIV.setAttribute("id", "risposta"+ ++contrisposte);
 
         let INPUTCHECK = document.createElement ("input");
         INPUTCHECK.setAttribute("type", "checkbox");
@@ -130,30 +132,36 @@
         DIV.appendChild(DIVrisposte);
        
         let c = 0;
+        let cont = 0;
         while (c<3){
           let DIVRIS = document.createElement ("div");
           DIVRIS.setAttribute("class", "risposta");
+          DIVRIS.setAttribute("id", "risposta"+ ++cont);
+          DIVrisposte.appendChild(DIVRIS);
 
           let INPUTCHECK = document.createElement ("input");
           INPUTCHECK.setAttribute("type", "checkbox");
-          DIVrisposte.appendChild(INPUTCHECK);
+          DIVRIS.appendChild(INPUTCHECK);
 
           let INPUTTEXT = document.createElement("input");
           INPUTTEXT.setAttribute("type", "text");
           INPUTTEXT.setAttribute("placeholder", "Inserisci Risposta");
           INPUTTEXT.setAttribute("class", "inAnswer");
-          DIVrisposte.appendChild(INPUTTEXT);
+          DIVRIS.appendChild(INPUTTEXT);
 
           let BUTTONDEL = document.createElement("button");
           BUTTONDEL.setAttribute("class", "eliminaRis");
           BUTTONDEL.setAttribute("onclick", "DelRis()");
           BUTTONDEL.innerText="Elimina";
-          DIVrisposte.appendChild(BUTTONDEL);
-
-          
+          DIVRIS.appendChild(BUTTONDEL);
           c++;
         }
-
+        let btncont = 1;
+        let BUTTONADDRIS = document.createElement("button");
+        BUTTONADDRIS.setAttribute("id", "add");
+        BUTTONADDRIS.setAttribute("onclick", "DeleteDom()");
+        BUTTONDEL.innerText="Elimina Domanda";
+        DIVDESCR.appendChild(BUTTONDEL);
         let container = document.getElementById("tabQuiz");
         container.appendChild(DIV);
       
