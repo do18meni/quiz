@@ -13,8 +13,7 @@
           <input type="text" placeholder="Nome Quiz" name="nameQuiz" id="nameQuiz" required>
           <br>
           <br>
-        <section id="tabQuiz">
-          
+        <section id="tabQuiz"> 
           <br>
           <div class="domanda" id = "domanda1">          
             <br>
@@ -50,15 +49,14 @@
 
             <div>
               <br>
+
               <button  class="addRis" id="addRis1"  onclick="AddRis(1)">+ Risposta</button>
               <br><br>
             </div>
           </div>
           <br>
            
-           
-        </section>
-        
+        </section> 
         <div>
           <br>
           <button id="addDom" onclick="AddDom()">+ Domanda</button>
@@ -107,6 +105,7 @@
         deleteRisposta.parentNode.removeChild(deleteRisposta);
 
       }
+
 */ 
 
 let contdom = 1;
@@ -141,8 +140,10 @@ function AddDom(addDom){
         DIVDESCR.appendChild(BUTTONDEL);
 
         let DIVrisposte= document.createElement ("div");
+
         DIVrisposte.setAttribute("id", "risposte"+ ++conris);
         DIVrisposte.setAttribute("class", "risposte");
+
         DIVDOM.appendChild(DIVrisposte);
 
         let BR3 = document.createElement("br");
@@ -183,7 +184,9 @@ function AddDom(addDom){
         BUTTONADDRIS.setAttribute("class", "addRis");
         BUTTONADDRIS.setAttribute("id", "addRis"+ ++btncont);
         BUTTONADDRIS.setAttribute("class", "addRis");
+
         BUTTONADDRIS.setAttribute("onclick", "AddRis(" + ++lastAdd + ")");
+
         BUTTONADDRIS.innerText="+ Risposta";
 
         DIVBTNRIS.appendChild(BUTTONADDRIS);
