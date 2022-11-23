@@ -20,12 +20,12 @@
             <br>
             <div class="descrizione">
             <input type="text" placeholder="Inserisci Domanda" name="newQuestion" class="newQuestion" required>
-            <button class="eliminaDom" onclick="DeleteDom()">Elimina Domanda</button>
+            <button class="DeleteDom" onclick="DeleteDom()">Elimina Domanda</button>
             </div>
             <br>
 
             
-            <div class = "risposte1">
+            <div class = "risposte"  id = "risposte1">
 
 
               <div class = "risposta" id = "risposta1">
@@ -50,10 +50,11 @@
 
             <div>
               <br>
-              <button id="addRis1" onclick="AddRis()">+ Risposta</button>
+              <button  class="addRis" id="addRis1"  onclick="AddRis(1)">+ Risposta</button>
               <br><br>
             </div>
           </div>
+          <br>
            
            
         </section>
@@ -71,30 +72,33 @@
     </form>
  
     <script>
+     
       let contrisposte = 3;
-      function AddRis(){
-        let DIV = document.createElement ("div");
-        DIV.setAttribute("class", "risposta");
-        DIV.setAttribute("id", "risposta"+ ++contrisposte);
+      let lastAdd = 1;
+      function AddRis(id){
+
+        let DIVRIS = document.createElement ("div");
+        DIVRIS.setAttribute("class", "risposta");
+        DIVRIS.setAttribute("id", "risposta"+ ++contrisposte);
 
         let INPUTCHECK = document.createElement ("input");
         INPUTCHECK.setAttribute("type", "checkbox");
-        DIV.appendChild(INPUTCHECK);
+        DIVRIS.appendChild(INPUTCHECK);
 
         let INPUTTEXT = document.createElement("input");
         INPUTTEXT.setAttribute("type", "text");
         INPUTTEXT.setAttribute("placeholder", "Inserisci Risposta");
         INPUTTEXT.setAttribute("class", "inAnswer");
-        DIV.appendChild(INPUTTEXT);
+        DIVRIS.appendChild(INPUTTEXT);
 
         let BUTTONDEL = document.createElement("button");
         BUTTONDEL.setAttribute("class", "eliminaRis");
         BUTTONDEL.setAttribute("onclick", "DelRis(cont)");
         BUTTONDEL.innerText="Elimina";
-        DIV.appendChild(BUTTONDEL);
+        DIVRIS.appendChild(BUTTONDEL);
 
-        let container = document.getElementById("risposte");
-        container.appendChild(DIV);
+        let container = document.getElementById("risposte" + id);
+        container.appendChild(DIVRIS);
       }
 
  /*     function DelRis(){
@@ -103,17 +107,26 @@
         deleteRisposta.parentNode.removeChild(deleteRisposta);
 
       }
-*/
-      function AddDom(addDom){
-        let contdom = 1;
-        let conris = 1;
-        let DIV = document.createElement ("div");
-        DIV.setAttribute("class", "domanda");
-        DIV.setAttribute("id", "domanda" + ++contdom);
+*/ 
+
+let contdom = 1;
+let conris = 1;
+
+function AddDom(addDom){
        
+        let DIVDOM = document.createElement ("div");
+        DIVDOM.setAttribute("class", "domanda");
+        DIVDOM.setAttribute("id", "domanda" + ++contdom);
+
+        let BR1 = document.createElement("br");
+        DIVDOM.appendChild(BR1);
+
         let DIVDESCR = document.createElement ("div");
         DIVDESCR.setAttribute("class", "descrizione");
-        DIV.appendChild(DIVDESCR);
+        DIVDOM.appendChild(DIVDESCR);
+
+        let BR2 = document.createElement("br");
+        DIVDOM.appendChild(BR2);
 
         let INPUTTEXT = document.createElement("input");
         INPUTTEXT.setAttribute("type", "text");
@@ -128,8 +141,12 @@
         DIVDESCR.appendChild(BUTTONDEL);
 
         let DIVrisposte= document.createElement ("div");
-        DIVrisposte.setAttribute("class", "risposte"+ ++conris);
-        DIV.appendChild(DIVrisposte);
+        DIVrisposte.setAttribute("id", "risposte"+ ++conris);
+        DIVrisposte.setAttribute("class", "risposte");
+        DIVDOM.appendChild(DIVrisposte);
+
+        let BR3 = document.createElement("br");
+        DIVDOM.appendChild(BR3);
        
         let c = 0;
         let cont = 0;
@@ -156,19 +173,31 @@
           DIVRIS.appendChild(BUTTONDEL);
           c++;
         }
+
         let btncont = 1;
+
+        let DIVBTNRIS = document.createElement ("div");
+        DIVDOM.appendChild(DIVBTNRIS);
+
         let BUTTONADDRIS = document.createElement("button");
-        BUTTONADDRIS.setAttribute("id", "add");
-        BUTTONADDRIS.setAttribute("onclick", "DeleteDom()");
-        BUTTONDEL.innerText="Elimina Domanda";
-        DIVDESCR.appendChild(BUTTONDEL);
+        BUTTONADDRIS.setAttribute("class", "addRis");
+        BUTTONADDRIS.setAttribute("id", "addRis"+ ++btncont);
+        BUTTONADDRIS.setAttribute("class", "addRis");
+        BUTTONADDRIS.setAttribute("onclick", "AddRis(" + ++lastAdd + ")");
+        BUTTONADDRIS.innerText="+ Risposta";
+
+        DIVBTNRIS.appendChild(BUTTONADDRIS);
+
+        let BR4 = document.createElement("br");
+        DIVDOM.appendChild(BR4);
+
         let container = document.getElementById("tabQuiz");
-        container.appendChild(DIV);
+        container.appendChild(DIVDOM);
+
+        let BRFUORI = document.createElement("br");
+        container.appendChild(BRFUORI);
       
       }
-
-
-
 
 
 function createDocument(idItem, className, typeTag){
