@@ -19,7 +19,7 @@
             <br>
             <div class="descrizione">
             <input type="text" placeholder="Inserisci Domanda" name="newQuestion" class="newQuestion" required>
-            <button class="DeleteDom" onclick="DeleteDom()">Elimina Domanda</button>
+            <button class="DeleteDom" id="deleteDom1" onclick="DeleteDom(contdom)">Elimina Domanda</button>
             </div>
             <br>
 
@@ -27,22 +27,22 @@
             <div class = "risposte"  id = "risposte1">
 
 
-              <div class = "risposta" id = "risposta1">
+              <div class = "risposta" id = "risposta1-1">
                 <input type = "checkbox">
                 <input type="text" placeholder="Inserisci Risposta" name="inAnswer" class="inAnswer" required>
-                <button class="eliminaRis" onclick="DelRis()">Elimina</button>
+                <button class="eliminaRis" onclick="DelRis('risposta1-1')">Elimina</button>
               </div>
 
-              <div class = "risposta" id = "risposta2">
+              <div class = "risposta" id = "risposta1-2">
                 <input type = "checkbox">
                 <input type="text" placeholder="Inserisci Risposta" name="inAnswer" class="inAnswer" required>
-                <button class="eliminaRis" onclick="DelRis()">Elimina</button>
+                <button class="eliminaRis" onclick="DelRis('risposta1-2')">Elimina</button>
               </div>
 
-              <div class = "risposta" id = "risposta3">
+              <div class = "risposta" id = "risposta1-3">
                 <input type = "checkbox">
                 <input type="text" placeholder="Inserisci Risposta" name="inAnswer" class="inAnswer" required>
-                <button class="eliminaRis" onclick="DelRis()">Elimina</button>
+                <button class="eliminaRis" onclick="DelRis('risposta1-3')">Elimina</button>
               </div>
 
             </div>
@@ -70,14 +70,14 @@
     </form>
  
     <script>
-     
-      let contrisposte = 3;
+      let contatori = [3];
       let lastAdd = 1;
-      function AddRis(id){
 
+      function AddRis(id){
+        
         let DIVRIS = document.createElement ("div");
         DIVRIS.setAttribute("class", "risposta");
-        DIVRIS.setAttribute("id", "risposta"+ ++contrisposte);
+        DIVRIS.setAttribute("id", "risposta"+ id + "-"+ ++contatori[id-1]);
 
         let INPUTCHECK = document.createElement ("input");
         INPUTCHECK.setAttribute("type", "checkbox");
@@ -91,127 +91,141 @@
 
         let BUTTONDEL = document.createElement("button");
         BUTTONDEL.setAttribute("class", "eliminaRis");
-        BUTTONDEL.setAttribute("onclick", "DelRis(cont)");
+        BUTTONDEL.setAttribute("onclick", "DelRis(risposta"+ id + "-"+ ++contatori[id-1]+")");
         BUTTONDEL.innerText="Elimina";
         DIVRIS.appendChild(BUTTONDEL);
 
         let container = document.getElementById("risposte" + id);
         container.appendChild(DIVRIS);
-      }
 
- /*     function DelRis(){
-// PER ORA NON VA
-        var deleteRisposta = document.getElementsByClassName("risposta");
-        deleteRisposta.parentNode.removeChild(deleteRisposta);
+        contatori[id-1]++;
 
       }
 
-*/ 
+    let contdom = 1;
+    let conris = 1;
+    let del = 1;
+    
+    function AddDom(addDom){
 
-let contdom = 1;
-let conris = 1;
+      contatori.push(3);
 
-function AddDom(addDom){
-       
-        let DIVDOM = document.createElement ("div");
-        DIVDOM.setAttribute("class", "domanda");
-        DIVDOM.setAttribute("id", "domanda" + ++contdom);
+      let DIVDOM = document.createElement ("div");
+      DIVDOM.setAttribute("class", "domanda");
+      DIVDOM.setAttribute("id", "domanda" + ++contdom);
 
-        let BR1 = document.createElement("br");
-        DIVDOM.appendChild(BR1);
+      let BR1 = document.createElement("br");
+      DIVDOM.appendChild(BR1);
 
-        let DIVDESCR = document.createElement ("div");
-        DIVDESCR.setAttribute("class", "descrizione");
-        DIVDOM.appendChild(DIVDESCR);
+      let DIVDESCR = document.createElement ("div");
+      DIVDESCR.setAttribute("class", "descrizione");
+      DIVDOM.appendChild(DIVDESCR);
 
-        let BR2 = document.createElement("br");
-        DIVDOM.appendChild(BR2);
+      let BR2 = document.createElement("br");
+      DIVDOM.appendChild(BR2);
+
+      let INPUTTEXT = document.createElement("input");
+      INPUTTEXT.setAttribute("type", "text");
+      INPUTTEXT.setAttribute("placeholder", "Inserisci Domanda");
+      INPUTTEXT.setAttribute("class", "newQuestion");
+      DIVDESCR.appendChild(INPUTTEXT);
+
+      let BUTTONDEL = document.createElement("button");
+      BUTTONDEL.setAttribute("class", "DeleteDom");
+      BUTTONDEL.setAttribute("id", "deleteDom"+ ++del);
+      BUTTONDEL.setAttribute("onclick", "DeleteDom("+ del +")");
+      BUTTONDEL.innerText="Elimina Domanda";
+      DIVDESCR.appendChild(BUTTONDEL);
+
+      let DIVrisposte= document.createElement ("div");
+
+      DIVrisposte.setAttribute("id", "risposte"+ ++conris);
+      DIVrisposte.setAttribute("class", "risposte");
+
+      DIVDOM.appendChild(DIVrisposte);
+
+      let BR3 = document.createElement("br");
+      DIVDOM.appendChild(BR3);
+    
+      let c = 0;
+      let cont = 0;
+      while (c<3){
+        let DIVRIS = document.createElement ("div");
+        DIVRIS.setAttribute("class", "risposta");
+        DIVRIS.setAttribute("id", "risposta"+ contdom +"-" + ++cont);
+        DIVrisposte.appendChild(DIVRIS);
+
+        let INPUTCHECK = document.createElement ("input");
+        INPUTCHECK.setAttribute("type", "checkbox");
+        DIVRIS.appendChild(INPUTCHECK);
 
         let INPUTTEXT = document.createElement("input");
         INPUTTEXT.setAttribute("type", "text");
-        INPUTTEXT.setAttribute("placeholder", "Inserisci Domanda");
-        INPUTTEXT.setAttribute("class", "newQuestion");
-        DIVDESCR.appendChild(INPUTTEXT);
+        INPUTTEXT.setAttribute("placeholder", "Inserisci Risposta");
+        INPUTTEXT.setAttribute("class", "inAnswer");
+        DIVRIS.appendChild(INPUTTEXT);
 
         let BUTTONDEL = document.createElement("button");
-        BUTTONDEL.setAttribute("class", "DeleteDom");
-        BUTTONDEL.setAttribute("onclick", "DeleteDom()");
-        BUTTONDEL.innerText="Elimina Domanda";
-        DIVDESCR.appendChild(BUTTONDEL);
-
-        let DIVrisposte= document.createElement ("div");
-
-        DIVrisposte.setAttribute("id", "risposte"+ ++conris);
-        DIVrisposte.setAttribute("class", "risposte");
-
-        DIVDOM.appendChild(DIVrisposte);
-
-        let BR3 = document.createElement("br");
-        DIVDOM.appendChild(BR3);
-       
-        let c = 0;
-        let cont = 0;
-        while (c<3){
-          let DIVRIS = document.createElement ("div");
-          DIVRIS.setAttribute("class", "risposta");
-          DIVRIS.setAttribute("id", "risposta"+ ++cont);
-          DIVrisposte.appendChild(DIVRIS);
-
-          let INPUTCHECK = document.createElement ("input");
-          INPUTCHECK.setAttribute("type", "checkbox");
-          DIVRIS.appendChild(INPUTCHECK);
-
-          let INPUTTEXT = document.createElement("input");
-          INPUTTEXT.setAttribute("type", "text");
-          INPUTTEXT.setAttribute("placeholder", "Inserisci Risposta");
-          INPUTTEXT.setAttribute("class", "inAnswer");
-          DIVRIS.appendChild(INPUTTEXT);
-
-          let BUTTONDEL = document.createElement("button");
-          BUTTONDEL.setAttribute("class", "eliminaRis");
-          BUTTONDEL.setAttribute("onclick", "DelRis()");
-          BUTTONDEL.innerText="Elimina";
-          DIVRIS.appendChild(BUTTONDEL);
-          c++;
-        }
-
-        let btncont = 1;
-
-        let DIVBTNRIS = document.createElement ("div");
-        DIVDOM.appendChild(DIVBTNRIS);
-
-        let BUTTONADDRIS = document.createElement("button");
-        BUTTONADDRIS.setAttribute("class", "addRis");
-        BUTTONADDRIS.setAttribute("id", "addRis"+ ++btncont);
-        BUTTONADDRIS.setAttribute("class", "addRis");
-
-        BUTTONADDRIS.setAttribute("onclick", "AddRis(" + ++lastAdd + ")");
-
-        BUTTONADDRIS.innerText="+ Risposta";
-
-        DIVBTNRIS.appendChild(BUTTONADDRIS);
-
-        let BR4 = document.createElement("br");
-        DIVDOM.appendChild(BR4);
-
-        let container = document.getElementById("tabQuiz");
-        container.appendChild(DIVDOM);
-
-        let BRFUORI = document.createElement("br");
-        container.appendChild(BRFUORI);
-      
+        BUTTONDEL.setAttribute("class", "eliminaRis");
+        BUTTONDEL.setAttribute("onclick", "DelRis(risposta"+ contdom +"-" + ++cont +")");
+        BUTTONDEL.innerText="Elimina";
+        DIVRIS.appendChild(BUTTONDEL);
+        c++;
       }
 
+      let btncont = 1;
 
-function createDocument(idItem, className, typeTag){
-	
-	this.objButton = document.createElement(typeTag);
-	this.objButton.id=idItem;
-	if(className!="")
-		this.objButton.classList.add(className);
-	
-	return this.objButton;
-}
+      let DIVBTNRIS = document.createElement ("div");
+      DIVDOM.appendChild(DIVBTNRIS);
+
+      let BUTTONADDRIS = document.createElement("button");
+      BUTTONADDRIS.setAttribute("class", "addRis");
+      BUTTONADDRIS.setAttribute("id", "addRis"+  ++btncont);
+      BUTTONADDRIS.setAttribute("class", "addRis");
+
+      BUTTONADDRIS.setAttribute("onclick", "AddRis(" + ++lastAdd + ")");
+
+      BUTTONADDRIS.innerText="+ Risposta";
+
+      DIVBTNRIS.appendChild(BUTTONADDRIS);
+
+      let BR4 = document.createElement("br");
+      DIVDOM.appendChild(BR4);
+
+      let container = document.getElementById("tabQuiz");
+      container.appendChild(DIVDOM);
+
+      let BRFUORI = document.createElement("br");
+      container.appendChild(BRFUORI);
+    
+    }
+
+
+    function DelRis(divRisposta){
+      
+      var deleteRisposta = document.getElementById(divRisposta);
+      deleteRisposta.remove();
+
+
+    }
+
+    function DeleteDom(del){
+      
+      var deleteDomanda = document.getElementById("domanda" + --del);
+      deleteDomanda.remove();
+
+    }
+
+
+    function createDocument(idItem, className, typeTag){
+      
+      this.objButton = document.createElement(typeTag);
+      this.objButton.id=idItem;
+      if(className!="")
+        this.objButton.classList.add(className);
+      
+      return this.objButton;
+    }
     </script>
   </body>
 </html>
