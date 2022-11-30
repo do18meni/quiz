@@ -91,14 +91,12 @@
 
         let BUTTONDEL = document.createElement("button");
         BUTTONDEL.setAttribute("class", "eliminaRis");
-        BUTTONDEL.setAttribute("onclick", "DelRis(risposta"+ id + "-"+ ++contatori[id-1]+")");
+        BUTTONDEL.setAttribute("onclick", "DelRis('risposta"+ id + "-"+ contatori[id-1]+"')");
         BUTTONDEL.innerText="Elimina";
         DIVRIS.appendChild(BUTTONDEL);
 
         let container = document.getElementById("risposte" + id);
         container.appendChild(DIVRIS);
-
-        contatori[id-1]++;
 
       }
 
@@ -167,7 +165,7 @@
 
         let BUTTONDEL = document.createElement("button");
         BUTTONDEL.setAttribute("class", "eliminaRis");
-        BUTTONDEL.setAttribute("onclick", "DelRis(risposta"+ contdom +"-" + ++cont +")");
+        BUTTONDEL.setAttribute("onclick", "DelRis('risposta"+ contdom + "-" + cont +"')");
         BUTTONDEL.innerText="Elimina";
         DIVRIS.appendChild(BUTTONDEL);
         c++;
@@ -200,14 +198,21 @@
     
     }
 
-
-    function DelRis(divRisposta){
+//quello che ho fatto io 
+//    function DelRis(divRisposta){
       
-      var deleteRisposta = document.getElementById(divRisposta);
-      deleteRisposta.remove();
+//      var deleteRisposta = document.getElementById(divRisposta);
+//      deleteRisposta.remove();
 
 
-    }
+//    }
+
+
+//quello che hai detto tu ma non va perchè è mistico
+function DelRis (id){
+  var deleteRisposta = document.getElementById(id);
+ deleteRisposta.remove();
+}
 
     function DeleteDom(del){
       
