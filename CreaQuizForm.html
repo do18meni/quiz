@@ -15,10 +15,10 @@
           <br>
         <section id="tabQuiz"> 
           <br>
-          <div class="domanda" id = "domanda1">          
+          <div class="domanda"  name = "domanda1" id = "domanda1">          
             <br>
             <div class="descrizione">
-            <input type="text" placeholder="Inserisci Domanda" name="newQuestion" class="newQuestion" required>
+            <input type="text" placeholder="Inserisci Domanda" name="newQuestion1" class="newQuestion" required>
             <button class="DeleteDom" id="deleteDom1" onclick="DeleteDom(contdom)">Elimina Domanda</button>
             </div>
             <br>
@@ -27,19 +27,19 @@
             <div class = "risposte"  id = "risposte1">
 
 
-              <div class = "risposta" id = "risposta1-1">
+              <div class = "risposta" name = "risposta1-1" id = "risposta1-1">
                 <input type = "checkbox">
                 <input type="text" placeholder="Inserisci Risposta" name="inAnswer" class="inAnswer" required>
                 <button class="eliminaRis" onclick="DelRis('risposta1-1')">Elimina</button>
               </div>
 
-              <div class = "risposta" id = "risposta1-2">
+              <div class = "risposta" name = "risposta1-2"  id = "risposta1-2">
                 <input type = "checkbox">
                 <input type="text" placeholder="Inserisci Risposta" name="inAnswer" class="inAnswer" required>
                 <button class="eliminaRis" onclick="DelRis('risposta1-2')">Elimina</button>
               </div>
 
-              <div class = "risposta" id = "risposta1-3">
+              <div class = "risposta" name = "risposta1-3" id = "risposta1-3">
                 <input type = "checkbox">
                 <input type="text" placeholder="Inserisci Risposta" name="inAnswer" class="inAnswer" required>
                 <button class="eliminaRis" onclick="DelRis('risposta1-3')">Elimina</button>
@@ -63,7 +63,7 @@
           <br><br>
         </div>
         <br>
-        <button type="submit" name="NewQuiz" id="conferma" onclick="conferma()">CONFERMA CREAZIONE</button>
+        <button type="submit" name="conferma" id="conferma">CONFERMA CREAZIONE</button>
 
         
         </div>
@@ -77,7 +77,8 @@
         
         let DIVRIS = document.createElement ("div");
         DIVRIS.setAttribute("class", "risposta");
-        DIVRIS.setAttribute("id", "risposta"+ id + "-"+ ++contatori[id-1]);
+        DIVRIS.setAttribute ("name","risposta"+ id + "-"+ ++contatori[id-1]);
+        DIVRIS.setAttribute("id", "risposta"+ id + "-"+ contatori[id-1]);
 
         let INPUTCHECK = document.createElement ("input");
         INPUTCHECK.setAttribute("type", "checkbox");
@@ -110,7 +111,8 @@
 
       let DIVDOM = document.createElement ("div");
       DIVDOM.setAttribute("class", "domanda");
-      DIVDOM.setAttribute("id", "domanda" + ++contdom);
+      DIVDOM.setAttribute("name", "domanda" + ++contdom);
+      DIVDOM.setAttribute("id", "domanda" + contdom);
 
       let BR1 = document.createElement("br");
       DIVDOM.appendChild(BR1);
@@ -147,10 +149,12 @@
     
       let c = 0;
       let cont = 0;
+
       while (c<3){
         let DIVRIS = document.createElement ("div");
         DIVRIS.setAttribute("class", "risposta");
-        DIVRIS.setAttribute("id", "risposta"+ contdom +"-" + ++cont);
+        DIVRIS.setAttribute("name", "risposta" + contdom + "-" + ++cont);
+        DIVRIS.setAttribute("id", "risposta"+ contdom + "-" + cont);
         DIVrisposte.appendChild(DIVRIS);
 
         let INPUTCHECK = document.createElement ("input");
