@@ -7,12 +7,16 @@
     
     <form method="post">
         <div class="form-quiz">
+          <button id="home">
+            <a onclick="window.location.href='home.jsp'">Home</a>
+          </button>
           <h1>Crea Quiz</h1>
           <p> * Compila tutti i campi</p><br>
          
           <input type="text" placeholder="Nome Quiz" name="nameQuiz" id="nameQuiz" required>
           <br>
           <br>
+          <textarea type="text" placeholder="Descrizione Quiz" name="descriptionQuiz" id="descriptionQuiz" required></textarea>
         <section id="tabQuiz"> 
           <br>
           <div class="domanda" id = "domanda1">          
@@ -28,19 +32,19 @@
 
 
               <div class = "risposta" id = "risposta1-1">
-                <input type = "checkbox">
+                <input type = "checkbox" name = "checkbox1-1">
                 <input type="text" placeholder="Inserisci Risposta" name = "risposta1-1" class="inAnswer" required>
                 <button class="eliminaRis" onclick="DelRis('risposta1-1')">Elimina</button>
               </div>
 
               <div class = "risposta"  id = "risposta1-2">
-                <input type = "checkbox">
+                <input type = "checkbox" name = "checkbox1-2">
                 <input type="text" placeholder="Inserisci Risposta" name = "risposta1-2" class="inAnswer" required>
                 <button class="eliminaRis" onclick="DelRis('risposta1-2')">Elimina</button>
               </div>
 
               <div class = "risposta" id = "risposta1-3">
-                <input type = "checkbox">
+                <input type = "checkbox" name = "checkbox1-3">
                 <input type="text" placeholder="Inserisci Risposta" name = "risposta1-3" class="inAnswer" required>
                 <button class="eliminaRis" onclick="DelRis('risposta1-3')">Elimina</button>
               </div>
@@ -81,6 +85,7 @@
 
         let INPUTCHECK = document.createElement ("input");
         INPUTCHECK.setAttribute("type", "checkbox");
+        INPUTCHECK.setAttribute("name","checkbox"+ id + "-"+ contatori[id-1]);
         DIVRIS.appendChild(INPUTCHECK);
 
         let INPUTTEXT = document.createElement("input");
@@ -158,6 +163,7 @@
 
         let INPUTCHECK = document.createElement ("input");
         INPUTCHECK.setAttribute("type", "checkbox");
+        INPUTCHECK.setAttribute("name", "checkbox" + contdom + "-" + cont);
         DIVRIS.appendChild(INPUTCHECK);
 
         let INPUTTEXT = document.createElement("input");
